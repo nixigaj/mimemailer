@@ -6,19 +6,19 @@ To: {{ .To }}
 Date: {{ .Date }}{{ if .ListUnsubscribe }}
 List-Unsubscribe: {{ .ListUnsubscribe }}{{ end }}
 MIME-Version: 1.0
-Content-Type: multipart/alternative; boundary=boundary42
+Content-Type: multipart/alternative; boundary=multipart_email_boundary
 
---boundary42
+--multipart_email_boundary
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
 {{ .TextQP }}
 
---boundary42
+--multipart_email_boundary
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
 {{ .HTMLQP }}
 
---boundary42--
+--multipart_email_boundary--
 `

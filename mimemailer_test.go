@@ -25,20 +25,18 @@ From: "Sender Name" <sender@example.com>
 To: "Test Recipient" <test@example.com>
 Date: Tue, 10 Nov 2009 23:00:00 +0000
 MIME-Version: 1.0
-Content-Type: multipart/alternative; boundary=boundary42
+Content-Type: multipart/alternative; boundary=multipart_email_boundary
 
---boundary42
+--multipart_email_boundary
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-
 
 Hello =F0=9F=8C=8D. This email w=C3=ADll be formatted as a MIME message as =
 per RFC 2045 and RFC 2046 =F0=9F=93=A7
 
---boundary42
+--multipart_email_boundary
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-
 
 <!doctype html>
 <html xmlns=3Dhttp://www.w3.org/1999/xhtml style=3Dbackground:#f3f3f3>
@@ -48,7 +46,7 @@ as per RFC 2045 and RFC 2046 =F0=9F=93=A7</p>
 </body>
 </html>
 
---boundary42--
+--multipart_email_boundary--
 `))
 }
 
@@ -87,5 +85,4 @@ func TestMakeEmail(t *testing.T) {
 		t.Error("Error on TestMakeEmail - Email doesn't match expected output")
 		t.Log(diff.Diff(string(made), string(expectedEmail)))
 	}
-
 }

@@ -19,7 +19,7 @@ This package takes care of:
 
 Given an email like this:
 
-```
+```go
 Email{
 	ToAddress: "test@example.com",
 	ToName: "Test Recipient",
@@ -75,33 +75,36 @@ the same connection.
  
 Example Usage:  
 
-```
+```go
+package main
+
 import (
 	"log"
+	"time"
 	"github.com/adueck/mimemailer"
 )
 
 func main() {
-	Step 1 - Create a new mailer instance with config for SMTP
-		m, err := mimemailer.NewMailer(mimemailer.Config{
-		Host: 			"smtp.example.com",
-		Port: 			"576",
-		Username: 		"myusername",
-		Password: 		"mysecretpassword",
-		SenderName:		"My Name",
-		SenderAddress:		"email@example.com",
+	// Step 1 - Create a new mailer instance with config for SMTP
+	m, err := mimemailer.NewMailer(mimemailer.Config{
+		Host:          "smtp.example.com",
+		Port:          "576",
+		Username:      "myusername",
+		Password:      "mysecretpassword",
+		SenderName:    "My Name",
+		SenderAddress: "email@example.com",
 	})
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	Step 2 - Connect to SMTP Server
+	// Step 2 - Connect to SMTP Server
 	err = m.Connect()
 	if err != nil {
 		log.Fatal(err)	
 	}
 
-	Step 3 - Send message(s) 
+	// Step 3 - Send message(s) 
 	err = m.SendEmail(mimemailer.Email{
 		ToAddress: 	"recipient@example.com",
 		ToName:		"Bob Smith",
@@ -113,11 +116,11 @@ func main() {
 		log.Print(err)
 	}
 
-	...
-	You can send more messages on the persistent connection
-	When you are done, disconnect from the SMTP server
+	// ...
+	// You can send more messages on the persistent connection
+	// When you are done, disconnect from the SMTP server
 
-	Step 4 - Disconnect from SMTP server
+	// Step 4 - Disconnect from SMTP server
 	err = m.Disconnect()
 	if err != nil {
 		log.Fatal(err)
@@ -128,5 +131,3 @@ func main() {
 ## Documentation
 
 [https://godoc.org/github.com/adueck/mimemailer](https://godoc.org/github.com/adueck/mimemailer)
-
-
