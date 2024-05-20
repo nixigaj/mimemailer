@@ -30,6 +30,7 @@ type Config struct {
 type Email struct {
 	ToAddress       string
 	ToName          string
+	ReplyTo         string
 	Subject         string
 	HTML            string
 	Date            time.Time
@@ -40,6 +41,7 @@ type Email struct {
 type emailInfoForTemplate struct {
 	From            string
 	To              string
+	ReplyTo         string
 	Subject         string
 	ListUnsubscribe string
 	HTMLQP          string
@@ -229,6 +231,7 @@ func (email Email) make(fromAddress mail.Address) ([]byte, error) {
 	e := emailInfoForTemplate{
 		From:            fromAddress.String(),
 		To:              toAddress.String(),
+		ReplyTo:         email.ReplyTo,
 		ListUnsubscribe: email.ListUnsubscribe,
 		Subject:         email.Subject,
 		Date:            email.Date.Format(time.RFC1123Z),
