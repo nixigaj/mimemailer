@@ -40,6 +40,7 @@ type Email struct {
 // For use in the text template in making the email.
 type emailInfoForTemplate struct {
 	From            string
+	Name            string
 	To              string
 	ReplyTo         string
 	Subject         string
@@ -230,6 +231,7 @@ func (email Email) make(fromAddress mail.Address) ([]byte, error) {
 	// Prepare the struct to pass to the templatea
 	e := emailInfoForTemplate{
 		From:            fromAddress.String(),
+		Name:            fromAddress.Name,
 		To:              toAddress.String(),
 		ReplyTo:         email.ReplyTo,
 		ListUnsubscribe: email.ListUnsubscribe,

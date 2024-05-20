@@ -3,7 +3,7 @@ package mimemailer
 const emailTemplate = `Subject: {{ .Subject }}
 From: {{ .From }}
 To: {{ .To }}
-Reply-To: {{ .From }} <{{ .ReplyTo }}>
+Reply-To: {{ .Name }} <{{ .ReplyTo }}>
 Date: {{ .Date }}{{ if .ListUnsubscribe }}
 List-Unsubscribe: {{ .ListUnsubscribe }}{{ end }}
 MIME-Version: 1.0
