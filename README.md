@@ -130,4 +130,4 @@ func main() {
 
 ## Documentation
 
-[https://godoc.org/github.com/adueck/mimemailer](https://godoc.org/github.com/adueck/mimemailer)
+[https://godoc.org/github.com/nixigaj/mimemailer](https://godoc.org/github.com/nixigaj/mimemailer)

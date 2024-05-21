@@ -131,6 +131,15 @@ func (m *Mailer) Connect() error {
 	return nil
 }
 
+// Noop sends a NOOP packet to the SMTP server.
+func (m *Mailer) Noop() error {
+	err := m.client.Noop()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // Disconnect disconnects from SMTP server.
 func (m *Mailer) Disconnect() error {
 	err := m.client.Quit()
